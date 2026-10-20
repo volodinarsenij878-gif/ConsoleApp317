@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Program157
+{
+    internal class Program
+    {
+        static void Main()
+        {
+
+            Console.Write("Первое число: ");
+            if (!double.TryParse(Console.ReadLine(), out double a)) { Console.WriteLine("Ошибка."); return; }
+
+            Console.Write("Второе число: ");
+            if (!double.TryParse(Console.ReadLine(), out double b)) { Console.WriteLine("Ошибка."); return; }
+
+            Console.Write("Операция (+ - * /): ");
+            string op = Console.ReadLine()?.Trim();
+
+            double result;
+            switch (op)
+            {
+                case "+":
+                    result = a + b;
+                    break;
+                case "-":
+                    result = a - b;
+                    break;
+                case "*":
+                    result = a * b;
+                    break;
+                case "/":
+                    if (b == 0)
+                    {
+                        Console.WriteLine("Ошибка: деление на ноль.");
+                        return;
+                    }
+                    result = a / b;
+                    break;
+                default:
+                    Console.WriteLine("Неизвестная операция.");
+                    return;
+            }
+
+            Console.WriteLine($"Результат: {result}");
+        }
+    }
+}
